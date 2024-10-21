@@ -1,4 +1,12 @@
 # Dual-rotating-retarder Mueller Matrix Measurement System
+# 双波片旋转缪勒矩阵测量系统
+
+[English](#english) | [中文](#中文)
+
+---
+
+<a name="english"></a>
+# English Version
 
 ## Project Overview
 This project implements a dual-rotating-retarder polarization measurement system, utilizing Thorlabs KDC101 drivers and PRM1Z8 motorized rotation stages to automatically control the Polarization State Generator (PSG) and Polarization State Analyzer (PSA). It captures images using a Hikvision industrial camera for analysis and calculation of the sample's Mueller matrix.
@@ -109,13 +117,11 @@ Deng, L.; Fan, Z.; Chen, B.; Zhai, H.; He, H.; He, C.; Sun, Y.; Wang, Y.; Ma, H.
 
 ## Contact
 For any questions or suggestions, please contact liangyu_deng@163.com
-   
 
+---
 
-
-
-
-# 双波片旋转缪勒矩阵测量系统
+<a name="中文"></a>
+# 中文版本
 
 ## 项目概述
 这个项目实现了一个双板偏振测量系统，使用 Thorlabs KDC101 驱动器和 PRM1Z8 电动旋转位移台来自动化控制偏振态发生器（PSG）和偏振态分析仪（PSA），并通过海康威视工业相机捕获图像进行分析计算出样本Mueller矩阵。
@@ -226,7 +232,4 @@ python main.py
 Deng, L.; Fan, Z.; Chen, B.; Zhai, H.; He, H.; He, C.; Sun, Y.; Wang, Y.; Ma, H. A Dual-Modality Imaging Method Based on Polarimetry and Second Harmonic Generation for Characterization and Evaluation of Skin Tissue Structures. Int. J. Mol. Sci. 2023, 24, 4206. https://doi.org/10.3390/ijms24044206
 
 ## 联系方式
-如有任何问题或建议，请联系liangyu_deng@163.com
-
-
-
+如有任何问题或建议，请联系 liangyu_deng@163.com
