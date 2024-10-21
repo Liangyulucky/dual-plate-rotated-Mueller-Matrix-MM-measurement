@@ -26,8 +26,8 @@ def main():
 
     initial_angle_PSG = 110
     initial_angle_PSA = 85
-    points = 31
-    path = 'D:\dual-plate MM measurement\dual-plate MM measurement\Air_Data'
+    points = 30
+    path = '.\Data'
 
     # 设置角度序列
     interval_PSG = 6
