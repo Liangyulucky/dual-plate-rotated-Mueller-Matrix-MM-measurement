@@ -1,4 +1,115 @@
-# Dual-rotating-retarder Mueller Matrix measurement
+# Dual-rotating-retarder Mueller Matrix Measurement System
+
+## Project Overview
+This project implements a dual-rotating-retarder polarization measurement system, utilizing Thorlabs KDC101 drivers and PRM1Z8 motorized rotation stages to automatically control the Polarization State Generator (PSG) and Polarization State Analyzer (PSA). It captures images using a Hikvision industrial camera for analysis and calculation of the sample's Mueller matrix.
+
+## Theoretical Foundation
+The design and implementation of this project are based on the following research paper:
+
+Deng, L.; Fan, Z.; Chen, B.; Zhai, H.; He, H.; He, C.; Sun, Y.; Wang, Y.; Ma, H. A Dual-Modality Imaging Method Based on Polarimetry and Second Harmonic Generation for Characterization and Evaluation of Skin Tissue Structures. Int. J. Mol. Sci. 2023, 24, 4206. https://doi.org/10.3390/ijms24044206
+
+This paper introduces a dual-modality imaging method based on polarimetry and second harmonic generation for characterizing and evaluating skin tissue structures. Our project adopts the dual-rotating-retarder Mueller matrix measurement technique from this method.
+
+## System Optical Path Diagram
+The following diagram illustrates the hardware optical path of our system:
+(https://github.com/user-attachments/assets/a2a7ec71-af6b-48cd-bc1e-af99b53bdec8)
+*Figure 1: Hardware optical path diagram of the dual-rotating-retarder Mueller matrix measurement system*
+
+In this setup:
+1. Light from the source first passes through the Polarization State Generator (PSG)
+2. The light then passes through the sample
+3. Next, the light passes through the Polarization State Analyzer (PSA)
+4. Finally, the image is captured by a Hikvision industrial camera
+
+Both PSG and PSA are controlled by Thorlabs PRM1Z8 motorized rotation stages and KDC101 drivers, allowing precise angle adjustments.
+
+## Key Features
+1. Control of PRM1Z8 motorized rotation stages to specified angles using Thorlabs KDC101 drivers
+2. Image capture using Hikvision industrial camera
+3. Multi-threaded operation for parallel control and image capture
+4. Data storage in a specified directory
+
+## Hardware Requirements
+- 2x Thorlabs KDC101 drivers
+- 2x Thorlabs PRM1Z8 motorized rotation stages (for PSG and PSA)
+- Hikvision industrial camera (generic model)
+
+## Software Requirements
+- Python 3.10
+- Thorlabs Kinesis software (including SDK library)
+- Required Python libraries:
+  - threading
+  - time
+  - ctypes (for loading Thorlabs SDK)
+  - cv2 (OpenCV, for image capture)
+
+## Installation Steps
+1. Ensure Python 3.10 is installed
+2. Install required Python libraries
+3. Install Thorlabs Kinesis software:
+   - Download and install Kinesis software from the Thorlabs website
+   - Default installation path is `C:\Program Files\Thorlabs\Kinesis`
+   - Installing Kinesis software automatically includes the required SDK library
+4. Hikvision camera SDK is included in MvImport and doesn't require separate installation
+
+## Usage
+1. Connect Thorlabs KDC101 drivers to the computer and PRM1Z8 motorized rotation stages to the drivers
+2. Ensure the Hikvision industrial camera is properly connected and recognized by the system
+3. Set the correct serial numbers and initial angles
+4. Run the main program:
+```
+python main.py
+````
+5. The program will automatically control PSG and PSA motor rotations and capture images at each angle combination
+
+## Configuration
+Before running the program, ensure the following parameters are correctly set:
+
+- `serial_num_PSG`: Serial number of the KDC101 driver for PSG
+- `serial_num_PSA`: Serial number of the KDC101 driver for PSA
+- `initial_angle_PSG`: Initial angle of PSG
+- `initial_angle_PSA`: Initial angle of PSA
+- `target_angles_PSG`: List of target angles for PSG
+- `target_angles_PSA`: List of target angles for PSA
+- `path`: Directory for image and data storage
+
+## Notes
+- Ensure the `Data` folder exists in the program's running directory, or the program will create it automatically
+- The program uses multi-threading; ensure your system supports concurrent operations
+- Image capture may take some time; please be patient while the program completes
+- When using Thorlabs devices, follow all manufacturer safety guidelines and operating instructions
+- If you modified the Thorlabs Kinesis software installation path, update the SDK path in `device_control.py`. The default path is:
+  ```
+  kinesis_folder = r"C:\Program Files\Thorlabs\Kinesis"
+  ```
+
+## Troubleshooting
+If you encounter device communication issues, check:
+1. KDC101 driver serial numbers are correct
+2. Driver and motor connections are stable
+3. Thorlabs Kinesis software and SDK are correctly installed
+4. No other programs are occupying the serial ports
+
+If image capture fails, confirm:
+1. Hikvision camera is properly connected
+2. Camera drivers are correctly installed
+
+## Thorlabs Resources
+- [KDC101 Driver User Manual](https://www.thorlabs.com/thorproduct.cfm?partnumber=KDC101)
+- [PRM1Z8 Motorized Rotation Stage User Manual](https://www.thorlabs.com/thorproduct.cfm?partnumber=PRM1Z8)
+- [Thorlabs Kinesis Software Download](https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=Motion_Control)
+- [Thorlabs Technical Support](https://www.thorlabs.com/support.cfm)
+
+## Hikvision Resources
+- [Hikvision Industrial Camera Product Page](https://www.hikrobotics.com/en/machinevision/visionproduct)
+- [Hikvision Technical Support](https://www.hikrobotics.com/en/support)
+
+## References
+Deng, L.; Fan, Z.; Chen, B.; Zhai, H.; He, H.; He, C.; Sun, Y.; Wang, Y.; Ma, H. A Dual-Modality Imaging Method Based on Polarimetry and Second Harmonic Generation for Characterization and Evaluation of Skin Tissue Structures. Int. J. Mol. Sci. 2023, 24, 4206. https://doi.org/10.3390/ijms24044206
+
+## Contact
+For any questions or suggestions, please contact liangyu_deng@163.com
+   
 
 
 
@@ -117,77 +228,5 @@ Deng, L.; Fan, Z.; Chen, B.; Zhai, H.; He, H.; He, C.; Sun, Y.; Wang, Y.; Ma, H.
 ## 联系方式
 如有任何问题或建议，请联系liangyu_deng@163.com
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 双波片旋转缪勒矩阵测量系统
-
-## 项目概述
-这个项目实现了一个双波片旋转缪勒矩阵测量系统，用于自动化控制偏振态发生器（PSG）和偏振态分析仪（PSA），并通过相机捕获图像进行分析。
-
-## 主要功能
-1. 控制 PSG 和 PSA 设备旋转到指定角度
-2. 使用相机捕获图像
-3. 多线程操作以实现并行控制和图像捕获
-4. 数据保存到指定目录
-
-## 系统要求
-- Python 3.10
-- 所需的Python库：
-  - threading
-  - time
-  - serial
-  - cv2 (OpenCV)
-
-## 使用方法
-1. 确保所有必要的硬件（PSG、PSA、相机）已正确连接。
-2. 设置正确的串口号和初始角度。
-3. 运行主程序：python main.py
-4. 程序将自动控制 PSG 和 PSA 旋转，并在每个角度组合下捕获图像。
-
-## 配置
-在运行程序之前，请确保正确设置以下参数：
-
-- `serial_num_PSG`：PSG 设备的串口号
-- `serial_num_PSA`：PSA 设备的串口号
-- `initial_angle_PSG`：PSG 的初始角度
-- `initial_angle_PSA`：PSA 的初始角度
-- `target_angles_PSG`：PSG 的目标角度列表
-- `target_angles_PSA`：PSA 的目标角度列表
-- `path`：图像和数据保存的目录
-
-## 注意事项
-- 确保 `Data` 文件夹存在于程序运行目录下，或者程序会自动创建它。
-- 程序使用多线程，确保您的系统支持并发操作。
-- 相机捕获可能需要一定时间，请耐心等待程序完成。
-
-## 故障排除
-如果遇到设备通信问题，请检查：
-1. 串口号是否正确
-2. 设备连接是否稳定
-3. 是否有其他程序占用了串口
-
-如果图像捕获失败，请确认：
-1. 相机连接是否正常
-2. 相机驱动是否正确安装
-
-## 联系方式
-如有任何问题或建议，请联系liangyu_deng@163.com
 
 
