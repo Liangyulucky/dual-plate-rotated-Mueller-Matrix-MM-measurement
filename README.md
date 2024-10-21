@@ -20,7 +20,7 @@ This paper introduces a dual-modality imaging method based on polarimetry and se
 
 ## System Optical Path Diagram
 The following diagram illustrates the hardware optical path of our system:
-(https://github.com/user-attachments/assets/a2a7ec71-af6b-48cd-bc1e-af99b53bdec8)
+![双波片旋转缪勒矩阵测量系统的硬件光路示意图](images/system%20workflow.jpg)
 *Figure 1: Hardware optical path diagram of the dual-rotating-retarder Mueller matrix measurement system*
 
 In this setup:
