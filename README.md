@@ -1,1 +1,1 @@
-# dual-plate-rotated-Mueller-Matrix-MM-measurement
+# Dual-rotating-retarder Mueller Matrix measurement
