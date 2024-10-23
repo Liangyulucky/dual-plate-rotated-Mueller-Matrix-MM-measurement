@@ -17,6 +17,8 @@ def main():
     serial_num_PSA = c_char_p(b"27004239")  # 第二个设备序列号27004239
 
     # 创建同步屏障
+    # barrier_PSG = threading.Barrier()
+    # barrier_PSA = threading.Barrier()
     barrier = threading.Barrier(2)
 
     initialize_device_thread(serial_num_PSG, device_name="PSG")
@@ -27,7 +29,7 @@ def main():
     initial_angle_PSG = 110
     initial_angle_PSA = 85
     points = 30
-    path = '.\Data'
+    path =r'C:\Users\l\Desktop\dual-plate MM measurement\Air_Data'
 
     # 设置角度序列
     interval_PSG = 6
@@ -39,8 +41,8 @@ def main():
     target_angles_PSA = [(angle + initial_angle_PSA) for angle in angles_PSA]
 
     ### 第二部分：设备同步移动和拍照 - 使用线程
-    thread_PSG = threading.Thread(target=control_device, args=(serial_num_PSG, target_angles_PSG, initial_angle_PSG, "设备PSG",path, camera,barrier))
-    thread_PSA = threading.Thread(target=control_device, args=(serial_num_PSA, target_angles_PSA, initial_angle_PSA, "设备PSA",path, camera,barrier))
+    thread_PSG = threading.Thread(target=control_device_PSG, args=(serial_num_PSG, target_angles_PSG, initial_angle_PSG, "设备PSG", path, camera, barrier))
+    thread_PSA = threading.Thread(target=control_device_PSA, args=(serial_num_PSA, target_angles_PSA, initial_angle_PSA, "设备PSA", path, camera, barrier))
 
     # 启动移动和拍照线程
     thread_PSG.start()
