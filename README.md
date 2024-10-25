@@ -124,7 +124,7 @@ For any questions or suggestions, please contact liangyu_deng@163.com
 # 中文版本
 
 ## 项目概述
-这个项目实现了一个双板偏振测量系统，使用 Thorlabs KDC101 驱动器和 PRM1Z8 电动旋转位移台来自动化控制偏振态发生器（PSG）和偏振态分析仪（PSA），并通过海康威视工业相机捕获图像进行分析计算出样本Mueller矩阵。
+这个项目实现了一个双波片旋转缪勒矩阵测量系统，使用 Thorlabs KDC101 驱动器和 PRM1Z8 电动旋转位移台来自动化控制偏振态发生器（PSG）和偏振态分析仪（PSA），并通过海康威视工业相机捕获图像进行分析计算出样本Mueller矩阵。
 
 ## 理论基础
 本项目的设计和实现基于以下研究论文：
